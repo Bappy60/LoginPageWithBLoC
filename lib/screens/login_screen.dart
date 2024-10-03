@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 hintText: 'Password',
                 trailingIcon: SvgPicture.asset(
                   'assets/icons/eye.svg',
-                  width: 24,
+                  width: 24,  // Optional: you can set the width and height here as well
                   height: 24,
                 ),
               ),
@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 containerDecoration: kNextButtonBoxDecorationStyle,
                 textStyle: kNextButtonTextStyle,
                 textAlignment: Alignment.center,
-                textPadding: const EdgeInsets.fromLTRB(15, 18.5, 15, 18.5),
+                textPadding: const EdgeInsets.fromLTRB(15, 13, 15, 13),
                 onTap: () {},
               ),
               const SizedBox(height: 15),

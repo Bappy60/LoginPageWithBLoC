@@ -14,7 +14,6 @@ var kHintTextStyle = const TextStyle(
   fontSize: 12.0,
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.w400,
-  height: 1.0,
 );
 
 var kForgotPasswordTextStyle = const TextStyle(

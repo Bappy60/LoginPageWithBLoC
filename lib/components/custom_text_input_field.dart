@@ -16,19 +16,30 @@ class CustomTextInputFieldWithIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: kDefaultBoxDecorationStyle,
-      child: TextField(
-        cursorHeight: 12.0,
-        decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: kHintTextStyle,
-          isCollapsed: true,
-          errorBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          disabledBorder: InputBorder.none,
-          contentPadding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 12.0),
-          suffixIcon: trailingIcon,
-        ),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              style: kHintTextStyle,
+              textAlignVertical: TextAlignVertical.center,
+              decoration: InputDecoration(
+                hintText: hintText,
+                isCollapsed: true,
+                errorBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+                contentPadding: const EdgeInsets.fromLTRB(16.0, 12.5, 16.0, 12.5),
+              ),
+            ),
+          ),
+          if (trailingIcon != null)
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              // Add space between icon and text field
+              child: trailingIcon,
+            ),
+        ],
       ),
     );
   }

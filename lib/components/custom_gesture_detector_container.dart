@@ -22,11 +22,10 @@ class CustomGestureDetectorContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: containerDecoration,
-      alignment: textAlignment ?? Alignment.centerLeft,
-      child: GestureDetector(
-        onTap: onTap,
+    return GestureDetector(
+      child: Container(
+        decoration: containerDecoration,
+        alignment: textAlignment ?? Alignment.centerLeft,
         child: Padding(
           padding: textPadding ?? EdgeInsets.zero,
           child: Text(
