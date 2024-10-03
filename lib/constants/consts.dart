@@ -6,7 +6,6 @@ var kDefaultTextStyle = const TextStyle(
   fontSize: 12.0,
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.w400,
-  height: 1.0,
 );
 var kHintTextStyle = const TextStyle(
   fontFamily: 'Metropolis',
@@ -31,7 +30,6 @@ var kLoginTextStyle = const TextStyle(
   fontSize: 17.0,
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.w500,
-  height: 1.0,
 );
 var kNextButtonTextStyle = const TextStyle(
   fontFamily: 'Metropolis',
@@ -43,21 +41,24 @@ var kNextButtonTextStyle = const TextStyle(
 );
 
 var kDefaultBoxDecorationStyle = BoxDecoration(
-  borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+  borderRadius: BorderRadius.all(
+    Radius.circular((2 << 16).toDouble()),
+  ),
   color: Colors.white,
   border: Border.all(
-    color: const Color(0xFF323232), // Border color
-    // width: 1.0, // Border width
+    color: const Color(0xFF323232),
   ),
 );
+
 var kNextButtonBoxDecorationStyle = BoxDecoration(
-  borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+  borderRadius: BorderRadius.all(Radius.circular((2 << 16).toDouble())),
   color: const Color(0xFF323232),
   border: Border.all(
     color: const Color(0xFF323232), // Border color
     width: 1.0, // Border width
   ),
 );
+
 var kRegisterTextStyle = const TextStyle(
   fontFamily: 'Metropolis',
   color: Color(0xFF323232),

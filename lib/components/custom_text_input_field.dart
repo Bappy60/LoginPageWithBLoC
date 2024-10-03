@@ -20,25 +20,23 @@ class CustomTextInputFieldWithIcon extends StatelessWidget {
         children: [
           Expanded(
             child: TextField(
-              style: kHintTextStyle,
+              // obscureText: ,
+              style: kDefaultTextStyle.copyWith(color: Colors.black),
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 hintText: hintText,
                 isCollapsed: true,
+                hintStyle: kHintTextStyle,
                 errorBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 disabledBorder: InputBorder.none,
-                contentPadding: const EdgeInsets.fromLTRB(16.0, 12.5, 16.0, 12.5),
+                contentPadding:
+                    const EdgeInsets.fromLTRB(16.0, 12.5, 16.0, 12.5),
               ),
             ),
           ),
-          if (trailingIcon != null)
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              // Add space between icon and text field
-              child: trailingIcon,
-            ),
+          if (trailingIcon != null) trailingIcon!,
         ],
       ),
     );

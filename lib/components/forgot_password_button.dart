@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../constants/consts.dart';
 
-class GestureDetectorContainer extends StatelessWidget {
+class ForgotPasswordButton extends StatelessWidget {
   final String text;
   final Function()? onTap;
 
-  const GestureDetectorContainer({
+  const ForgotPasswordButton({
     super.key,
     required this.text,
     this.onTap,
@@ -17,13 +17,12 @@ class GestureDetectorContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        decoration: kNextButtonBoxDecorationStyle,
-        alignment: Alignment.center,
+        alignment: Alignment.centerLeft,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(15, 13, 15, 13),
+          padding:EdgeInsets.zero,
           child: Text(
             text,
-            style: kNextButtonTextStyle,
+            style: kDefaultTextStyle,
           ),
         ),
       ),
