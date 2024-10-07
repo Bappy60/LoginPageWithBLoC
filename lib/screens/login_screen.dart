@@ -18,52 +18,54 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: LayoutBuilder(builder: (context, constraints) {
-            return SingleChildScrollView(
-              keyboardDismissBehavior:
-                  ScrollViewKeyboardDismissBehavior.onDrag,
-              child: SizedBox(
-                height: constraints.maxHeight,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(height: 55),
-                    const CustomTextInputFieldWithIcon(
-                        hintText: 'Email address'),
-                    const SizedBox(height: 15),
-                    const CustomTextInputFieldWithIcon(
-                      hintText: 'Password',
-                      trailingIcon: PasswordEye(),
-                    ),
-                    const SizedBox(height: 10),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 16.0),
-                      child: ForgotPasswordButton(text: 'Forgot password?'),
-                    ),
-                    const SizedBox(height: 24),
-                    const Spacer(),
-                    GestureDetectorContainer(
-                      text: 'Next',
-                      onTap: () {},
-                    ),
-                    const SizedBox(height: 15),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Don\'t have an account?',
-                            style: kDefaultTextStyle),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text('Register', style: kRegisterTextStyle),
-                        ),
-                      ],
-                    ),
-                  ],
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
+                child: SizedBox(
+                  height: constraints.maxHeight,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const SizedBox(height: 55),
+                      const CustomTextInputFieldWithIcon(
+                          hintText: 'Email address'),
+                      const SizedBox(height: 15),
+                      const CustomTextInputFieldWithIcon(
+                        hintText: 'Password',
+                        trailingIcon: PasswordEye(),
+                      ),
+                      const SizedBox(height: 10),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 16.0),
+                        child: ForgotPasswordButton(text: 'Forgot password?'),
+                      ),
+                      const SizedBox(height: 24),
+                      const Spacer(),
+                      GestureDetectorContainer(
+                        text: 'Next',
+                        onTap: () {},
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Don\'t have an account?',
+                              style: kDefaultTextStyle),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text('Register', style: kRegisterTextStyle),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          }),
+              );
+            },
+          ),
         ),
       ),
     );
