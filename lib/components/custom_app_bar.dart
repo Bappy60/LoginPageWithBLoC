@@ -5,12 +5,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool allowBackButton;
+  final Function()? onBackButtonPressed;
   final Widget? trailingIcon;
 
   const CustomAppBar({
     super.key,
     required this.title,
     this.allowBackButton = true,
+    this.onBackButtonPressed,
     this.trailingIcon,
   });
 
@@ -19,14 +21,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       // If back button not allowed, set `leading` to null
       leading: allowBackButton
-          ? Container(
-            padding: const EdgeInsets.all(16),
-            child: SvgPicture.asset(
-                'assets/icons/arrow-down.svg',
-                width: 24,
-                height: 24,
+          ? GestureDetector(
+              onTap: onBackButtonPressed,
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                child: SvgPicture.asset(
+                  'assets/icons/arrow-down.svg',
+                  width: 24,
+                  height: 24,
+                ),
               ),
-          )
+            )
           : null,
       title: Text(
         title,

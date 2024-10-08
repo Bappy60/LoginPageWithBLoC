@@ -5,11 +5,13 @@ import '../constants/consts.dart';
 class GestureDetectorContainer extends StatelessWidget {
   final String text;
   final Function()? onTap;
+  final bool isLoading;
 
   const GestureDetectorContainer({
     super.key,
     required this.text,
     this.onTap,
+    required this.isLoading,
   });
 
   @override
@@ -21,10 +23,18 @@ class GestureDetectorContainer extends StatelessWidget {
         alignment: Alignment.center,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(15, 13, 15, 13),
-          child: Text(
-            text,
-            style: kNextButtonTextStyle,
-          ),
+          child: isLoading
+              ? const SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  ),
+                )
+              : Text(
+                  text,
+                  style: kNextButtonTextStyle,
+                ),
         ),
       ),
     );
