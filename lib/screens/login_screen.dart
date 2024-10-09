@@ -38,78 +38,94 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'Login',
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return SingleChildScrollView(
-                keyboardDismissBehavior:
-                    ScrollViewKeyboardDismissBehavior.onDrag,
-                child: SizedBox(
-                  height: constraints.maxHeight,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const SizedBox(height: 55),
-                      CustomTextInputFieldWithIcon(
-                        hintText: 'Email address',
-                        textEditingController: _emailController,
-                      ),
-                      const SizedBox(height: 15),
-                      CustomTextInputFieldWithIcon(
-                        hintText: 'Password',
-                        textEditingController: _passwordController,
-                        trailingIcon: const PasswordEye(),
-                      ),
-                      const SizedBox(height: 10),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 16.0),
-                        child: ForgotPasswordButton(text: 'Forgot password?'),
-                      ),
-                      const SizedBox(height: 24),
-                      const Spacer(),
-                      BlocListener<AuthenticationBloc, AuthenticationState>(
-                        listener: (context, state) {
-                           isLoading = state is AuthLoading;
-                        },
-                        child: GestureDetectorContainer(
-                          isLoading: isLoading,
-                          text: 'Next',
-                          onTap: () {
-                            _handleNextButtonOnTap(context);
+    return BlocListener<AuthenticationBloc, AuthenticationState>(
+      listener: (context, state) {
+        if (state is AuthError) {
+          // Show a SnackBar or an AlertDialog to display the error message
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      },
+      child: Scaffold(
+        appBar: const CustomAppBar(
+          title: 'Login',
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
+                  child: SizedBox(
+                    height: constraints.maxHeight,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const SizedBox(height: 55),
+                        CustomTextInputFieldWithIcon(
+                          hintText: 'Email address',
+                          textEditingController: _emailController,
+                        ),
+                        const SizedBox(height: 15),
+                        CustomTextInputFieldWithIcon(
+                          hintText: 'Password',
+                          textEditingController: _passwordController,
+                          trailingIcon: const PasswordEye(),
+                        ),
+                        const SizedBox(height: 10),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 16.0),
+                          child: ForgotPasswordButton(text: 'Forgot password?'),
+                        ),
+                        const SizedBox(height: 24),
+                        const Spacer(),
+                        BlocBuilder<AuthenticationBloc, AuthenticationState>(
+                          builder: (context, state) {
+                            return GestureDetectorContainer(
+                              isLoading: state is AuthLoading,
+                              text: 'Next',
+                              onTap: () {
+                                _handleNextButtonOnTap(context);
+                              },
+                            );
                           },
                         ),
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Don\'t have an account?',
-                              style: kDefaultTextStyle),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SignUpScreen(),
-                                ),
-                              );
-                            },
-                            child: Text('Register', style: kRegisterTextStyle),
-                          ),
-                        ],
-                      ),
-                    ],
+                        const SizedBox(height: 15),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Don\'t have an account?',
+                                style: kDefaultTextStyle),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SignUpScreen(),
+                                  ),
+                                );
+                                // context.read<AuthenticationBloc>().add(
+                                //       const SignUpInitialEvent(),
+                                //     );
+                              },
+                              child:
+                                  Text('Register', style: kRegisterTextStyle),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
       ),

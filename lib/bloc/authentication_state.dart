@@ -9,6 +9,11 @@ final class AuthInitial extends AuthenticationState {
   List<Object> get props => [];
 }
 
+final class SignUpInitial extends AuthenticationState {
+  @override
+  List<Object> get props => [];
+}
+
 final class AuthLoading extends AuthenticationState {
   @override
   List<Object> get props => [];
@@ -26,7 +31,9 @@ final class AuthUnauthenticated extends AuthenticationState {
 
 final class AuthError extends AuthenticationState {
   final String error;
+
   const AuthError({required this.error});
+
   @override
   List<Object> get props => [];
 }

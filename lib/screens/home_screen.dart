@@ -1,5 +1,8 @@
-import 'package:auth_using_bloc/screens/login_screen.dart';
+import 'package:auth_using_bloc/bloc/authentication_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,11 +16,13 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LoginScreen(),
-                  ));
+              context.read<AuthenticationBloc>().add(const LogOutEvent());
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => const LoginScreen(),
+              //   ),
+              // );
             },
           ),
         ],

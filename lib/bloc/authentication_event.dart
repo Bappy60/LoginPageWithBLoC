@@ -13,10 +13,10 @@ class LogInEvent extends AuthenticationEvent {
   List<Object> get props => [];
 }
 
-class SignUpEvent extends AuthenticationEvent {
+class SignUpSubmissionEvent extends AuthenticationEvent {
   final SignUpReq signUpReq;
 
-  const SignUpEvent({required this.signUpReq});
+  const SignUpSubmissionEvent({required this.signUpReq});
 
   @override
   List<Object> get props => [];
@@ -35,3 +35,10 @@ class AuthenticationInitialEvent extends AuthenticationEvent {
   @override
   List<Object?> get props =>[];
 }
+
+// class SignUpInitialEvent extends AuthenticationEvent {
+//   const SignUpInitialEvent();
+//
+//   @override
+//   List<Object?> get props =>[];
+// }

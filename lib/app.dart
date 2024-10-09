@@ -23,7 +23,7 @@ class App extends StatelessWidget {
         builder: (context, state) {
           if (state is AuthInitial) {
             return const SplashScreen();
-          } else if (state is AuthAuthenticated) {
+          }  else if (state is AuthAuthenticated) {
             return const HomeScreen();
           } else {
             return const LoginScreen();
