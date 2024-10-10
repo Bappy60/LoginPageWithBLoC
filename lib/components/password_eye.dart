@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class PasswordEye extends StatefulWidget {
   final VoidCallback? onTap;
-  final bool obscureText;
+  final bool toggleIcon;
 
   const PasswordEye({
     super.key,
     this.onTap,
-    this.obscureText = true,
+    this.toggleIcon = true,
   });
 
   @override
@@ -15,11 +15,11 @@ class PasswordEye extends StatefulWidget {
 }
 
 class PasswordEyeState extends State<PasswordEye> {
-  bool _isObscure = true;
+  bool _toggleIcon = true;
 
   void _toggleObscure() {
     setState(() {
-      _isObscure = !_isObscure;
+      _toggleIcon = !_toggleIcon;
     });
   }
 
@@ -30,15 +30,14 @@ class PasswordEyeState extends State<PasswordEye> {
         _toggleObscure();
         widget.onTap?.call();
       },
-
       child: Container(
         decoration:  BoxDecoration(
           shape: BoxShape.circle,
-          color: _isObscure? Colors.blue.withOpacity(0.2): null,
+          color: _toggleIcon? Colors.blue.withOpacity(0.2): null,
         ),
         padding: const EdgeInsets.all(9.5),
         child: Icon(
-          _isObscure ? Icons.visibility_off : Icons.visibility,
+          _toggleIcon ? Icons.visibility_off : Icons.visibility,
         ),
       ),
     );

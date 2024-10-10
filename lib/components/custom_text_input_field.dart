@@ -6,12 +6,14 @@ class CustomTextInputFieldWithIcon extends StatelessWidget {
   final String hintText;
   final TextEditingController textEditingController;
   final Widget? trailingIcon;
+  final bool obscureText;
 
   const CustomTextInputFieldWithIcon({
     super.key,
     required this.hintText,
     required this.textEditingController,
     this.trailingIcon,
+    this.obscureText = false,
   });
 
   @override
@@ -22,7 +24,7 @@ class CustomTextInputFieldWithIcon extends StatelessWidget {
         children: [
           Expanded(
             child: TextField(
-              // obscureText: ,
+              obscureText: obscureText,
               controller: textEditingController,
               style: kDefaultTextStyle.copyWith(color: Colors.black),
               textAlignVertical: TextAlignVertical.center,

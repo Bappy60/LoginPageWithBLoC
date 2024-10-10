@@ -19,9 +19,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
-  bool isLoading = false;
+  final TextEditingController confirmPasswordController = TextEditingController();
+  bool _obscurePasswordText = true;
+  bool _obscureConfirmPasswordText = true;
 
   @override
   void initState() {
@@ -92,14 +92,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         const SizedBox(height: 15),
                         CustomTextInputFieldWithIcon(
                           hintText: 'Password',
+                          obscureText: _obscurePasswordText,
                           textEditingController: passwordController,
-                          trailingIcon: const PasswordEye(),
+                          trailingIcon: PasswordEye(
+                            onTap: _togglePasswordView,
+                          ),
                         ),
                         const SizedBox(height: 15),
                         CustomTextInputFieldWithIcon(
                           hintText: 'Confirm Password',
+                          obscureText: _obscureConfirmPasswordText,
                           textEditingController: confirmPasswordController,
-                          trailingIcon: const PasswordEye(),
+                          trailingIcon: PasswordEye(
+                            onTap: _toggleConfirmPasswordView,
+                          ),
                         ),
                         const SizedBox(height: 15),
                         const Spacer(),
@@ -138,11 +144,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ),
         );
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => const HomeScreen(),
-    //   ),
-    // );
+  }
+
+  void _togglePasswordView() {
+    setState(() {
+      _obscurePasswordText = !_obscurePasswordText;
+    });
+  }
+  void _toggleConfirmPasswordView() {
+    setState(() {
+      _obscureConfirmPasswordText = !_obscureConfirmPasswordText;
+    });
   }
 }

@@ -20,7 +20,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  bool isLoading = false;
+  bool _obscurePasswordText = true;
+
 
   @override
   void initState() {
@@ -76,8 +77,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(height: 15),
                         CustomTextInputFieldWithIcon(
                           hintText: 'Password',
+                          obscureText: _obscurePasswordText,
                           textEditingController: _passwordController,
-                          trailingIcon: const PasswordEye(),
+                          trailingIcon: PasswordEye(
+                            onTap: _togglePasswordView,
+                          ),
                         ),
                         const SizedBox(height: 10),
                         const Padding(
@@ -111,9 +115,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     builder: (context) => const SignUpScreen(),
                                   ),
                                 );
-                                // context.read<AuthenticationBloc>().add(
-                                //       const SignUpInitialEvent(),
-                                //     );
                               },
                               child:
                                   Text('Register', style: kRegisterTextStyle),
@@ -141,5 +142,11 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
         );
+  }
+
+  void _togglePasswordView() {
+    setState(() {
+      _obscurePasswordText = !_obscurePasswordText;
+    });
   }
 }
