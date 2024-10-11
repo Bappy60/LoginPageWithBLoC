@@ -107,7 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             onTap: _toggleConfirmPasswordView,
                           ),
                         ),
-                        const SizedBox(height: 15),
+                        // const SizedBox(height: 15),
                         const Spacer(),
                         BlocBuilder<AuthenticationBloc, AuthenticationState>(
                           buildWhen: (previous, current) => true,

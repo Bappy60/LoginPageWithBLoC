@@ -3,7 +3,7 @@ import 'package:auth_using_bloc/models/login_req.dart';
 import 'package:auth_using_bloc/models/sign_up_req.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:uuid/uuid.dart';
 part 'authentication_event.dart';
 
 part 'authentication_state.dart';
@@ -23,20 +23,19 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>
     final passwordError = validatePassword(event.loginReq.password);
 
     if (emailError != null || passwordError != null) {
-      emit(const AuthError(error: 'Invalid login credentials'));
+      emit(AuthError(error: emailError ?? passwordError!));
       return;
     }
 
     emit(AuthLoading());
     try {
-      if (event.loginReq.email == 'rafid@gmail.com' &&
-          event.loginReq.password == '12345678') {
-        emit(const AuthError(error: 'User named Rafid is banned from the app!'));
+      if (event.loginReq.email == 'rafid@gmail.com') {
+        emit(AuthError(error: 'User named Rafid is banned from the app!'));
       }
       await Future.delayed(const Duration(seconds: 1));
       emit(AuthAuthenticated());
     } catch (e) {
-      emit(const AuthError(error: 'Login failed'));
+      emit(AuthError(error: 'Login failed'));
     }
   }
 
@@ -52,7 +51,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>
         passwordError != null ||
         confirmPasswordError != null ||
         nameError != null) {
-      emit(const AuthError(error: 'Invalid sign-up credentials'));
+      emit(AuthError(error: 'Invalid sign-up credentials'));
       return;
     }
 

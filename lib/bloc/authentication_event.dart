@@ -10,7 +10,7 @@ class LogInEvent extends AuthenticationEvent {
   const LogInEvent({required this.loginReq});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [loginReq];
 }
 
 class SignUpSubmissionEvent extends AuthenticationEvent {
@@ -19,7 +19,7 @@ class SignUpSubmissionEvent extends AuthenticationEvent {
   const SignUpSubmissionEvent({required this.signUpReq});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [signUpReq];
 }
 
 class LogOutEvent extends AuthenticationEvent {
@@ -33,12 +33,6 @@ class AuthenticationInitialEvent extends AuthenticationEvent {
   const AuthenticationInitialEvent();
 
   @override
-  List<Object?> get props =>[];
+  List<Object?> get props => [];
 }
 
-// class SignUpInitialEvent extends AuthenticationEvent {
-//   const SignUpInitialEvent();
-//
-//   @override
-//   List<Object?> get props =>[];
-// }

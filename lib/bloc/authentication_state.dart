@@ -29,11 +29,12 @@ final class AuthUnauthenticated extends AuthenticationState {
   List<Object> get props => [];
 }
 
-final class AuthError extends AuthenticationState {
+class AuthError extends AuthenticationState with EquatableMixin {
   final String error;
+  final String id;
 
-  const AuthError({required this.error});
+  AuthError({required this.error}) : id = const Uuid().v4();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [id, error];
 }
