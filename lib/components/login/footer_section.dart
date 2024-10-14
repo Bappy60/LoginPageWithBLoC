@@ -1,10 +1,10 @@
 part of '/screens/login_screen.dart';
 
-class SubmissionSection extends StatelessWidget {
+class FooterSection extends StatelessWidget {
   final bool isLoading;
   final Function()? _handleNextButtonOnTap;
 
-  const SubmissionSection({
+  const FooterSection({
     super.key,
     required this.isLoading,
     required Function()? handleNextButtonOnTap,

@@ -39,7 +39,7 @@ class LoginFormState extends State<LoginForm> {
                 togglePasswordView: _togglePasswordView,
               ),
               const Spacer(),
-              SubmissionSection(
+              FooterSection(
                 isLoading: widget.isLoading,
                 handleNextButtonOnTap: _handleNextButtonOnTap,
               ),

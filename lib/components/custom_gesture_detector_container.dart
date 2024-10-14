@@ -23,18 +23,20 @@ class GestureDetectorContainer extends StatelessWidget {
         alignment: Alignment.center,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(15, 13, 15, 13),
-          child: isLoading
-              ? const SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                  ),
-                )
-              : Text(
-                  text,
-                  style: kNextButtonTextStyle,
-                ),
+          child: Visibility(
+            visible: isLoading,
+            replacement: Text(
+              text,
+              style: kNextButtonTextStyle,
+            ),
+            child: const SizedBox(
+              width: 24,
+              height: 24,
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              ),
+            ),
+          ),
         ),
       ),
     );

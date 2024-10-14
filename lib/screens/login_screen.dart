@@ -14,7 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part '../components/login/login_form.dart';
 part '../components/login/register_section.dart';
 part '../components/login/input_section.dart';
-part '../components/login/submission_section.dart';
+part '../components/login/footer_section.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
